@@ -68,7 +68,7 @@
 
 .cloud{
   width: 380px;
-  height: 130px;
+  min-height: 80px;
   border-radius: 10px;
   flex-shrink: 0;
 }
@@ -295,7 +295,7 @@ body{
   height: 100%;
   font-size: .9rem;
   font-weight: bold;
-  padding: 10px;
+  padding: 15px 0 0 10px;
 }
 
 .column-right .center-right .chevron-message{
