@@ -99,7 +99,8 @@
         <div class="center-right flex dir-column">
 
           <div
-            v-for="(mess, msgIndex) in contacts[0].messages"            
+            v-for="(mess, msgIndex) in contacts[0].messages"
+            v-show="mess.status === 'sent'"            
             class="received-message cloud flex">
             <div class="text-message">
               {{mess.message}}
@@ -118,12 +119,12 @@
               </div>
             </div>  
           </div>
-          <div class="sent-message cloud flex">
+          <div
+            v-for="(mess, msgIndex) in contacts[0].messages"
+            v-show="mess.status === 'received'"
+            class="sent-message cloud flex">
             <div class="text-message">
-              Lorem ipsum dolbhhor sit amet consectetur adipisicing elit.
-              Quaerat eos blanditiis architecto expedita aspernatur quasi,
-              et nobis aut officiis soluta voluptates nesciunt voluptate ipsa
-              fuga rerum doloribus, unde laboriosam doloremque?
+              {{mess.message}}
             </div>
             <div class="details flex dir-column">
               <div class="chevron-message flex">
