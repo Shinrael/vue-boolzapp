@@ -193,6 +193,10 @@ createApp({
         const activeContact = this.contacts[this.contactActive];
         activeContact.messages.push({date: '', message: this.newMessage, status: 'sent'});
         this.newMessage = ''
+        setTimeout(() => {
+          activeContact.messages.push({date: '', message: 'OK', status: 'received'});
+        }, 1000);
+        
       }
     }
   },

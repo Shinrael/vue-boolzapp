@@ -10,3 +10,4 @@ Riprendendo il compito vecchio della struttura html-css di boolzapp, ora dobbiam
 2. Ritorno sui contatti e attravero @click gli dico che l'indice è uguale alla variabile creata prima, cosi al click cambiano anche i messaggi all'interno visualizzando correttamente le giuste chat.
 # Milestone 3
 1. aggiungiamo all'input il solito v-model.trim e gli diamo una costante vuota che valorizziamo nel nostro js. Con il keyup gli diamo una funzione dove dapprima ci assicuriamo tramite un if che non possa essere inviato un messaggio vuoto e dopo che il messaggio che scriviamo abbia i valori giusti. Alla fine resettiamo la barra.
+2. Nella funzione aggiungiamo un'altra funzione setTimeOut dove dopo 1 secondo riceviamo una risposta predefinita.
