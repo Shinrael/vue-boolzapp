@@ -59,6 +59,7 @@
         <div class="bottom-left">
           <div
             v-for="(contact, index) in contacts"
+            @click="contactActive = index"
             class="card flex align-center">
             <div class="card-l">
               <div class="circle">
@@ -79,7 +80,7 @@
 
         <div class="top-right flex align-center">
           <div
-            v-for="(contact, index) in contacts"
+            v-for="(contact, ctcIndex) in contacts[contactActive]"
             class="active-profile flex align-center">
             <div class="circle">
               <img :src="`${contact.avatar}`" alt="">
@@ -99,7 +100,7 @@
         <div class="center-right flex dir-column">
 
           <div
-            v-for="(mess, msgIndex) in contacts[0].messages"
+            v-for="(mess, msgIndex) in contacts[contactActive].messages"
             v-show="mess.status === 'sent'"            
             class="received-message cloud flex">
             <div class="text-message">
@@ -120,7 +121,7 @@
             </div>  
           </div>
           <div
-            v-for="(mess, msgIndex) in contacts[0].messages"
+            v-for="(mess, msgIndex) in contacts[contactActive].messages"
             v-show="mess.status === 'received'"
             class="sent-message cloud flex">
             <div class="text-message">
