@@ -100,7 +100,7 @@
 
           <div
             v-for="(mess, msgIndex) in sortedMessages"
-            :class="{ 'received-message': mess.status === 'received', 'sent-message': mess.status === 'sent' }"            
+            :class="{ 'received-message': mess.status === 'sent', 'sent-message': mess.status === 'received' }"            
             class="cloud flex">
             <div class="text-message">
               {{mess.message}}
@@ -126,7 +126,11 @@
             <i class="fa-regular fa-face-smile"></i>
           </div>
           <div class="message flex align-center justify-center">
-            <input type="text" placeholder="Scrivi un messaggio">
+            <input
+              v-model.trim="newMessage"
+              @keyup.enter="addMessage"
+              type="text"
+              placeholder="Scrivi un messaggio">
           </div>
           <div class="register-audio flex align-center justify-center">
             <i class="fa-solid fa-microphone"></i>

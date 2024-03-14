@@ -88,7 +88,7 @@ body{
 }
 
 .active-card{
-  border: 1px solid red !important;
+  background-color: #e0e0e0;
 }
 
 /****************************** 
@@ -180,6 +180,7 @@ body{
   height: 80%;  
   border: 1px solid #F5F5F5;
   border-left: none;
+  padding-left: 12px;
 }
 
 .column-left .top-left .search input::placeholder{
@@ -371,6 +372,7 @@ body{
   height: 80%;
   border: none;
   border-radius: 5px;
+  padding-left: 30px;
 }
 
 .column-right .bottom-right .message input::placeholder{

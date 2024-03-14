@@ -168,6 +168,7 @@ createApp({
         }
     ],
     contactActive: 0,
+    newMessage: '',
     
     }
   },
@@ -186,7 +187,14 @@ createApp({
       }
       return null; 
     },
-    
+    addMessage(){
+      const trimMessage = this.newMessage.trim();
+      if (trimMessage !== ''){
+        const activeContact = this.contacts[this.contactActive];
+        activeContact.messages.push({date: '', message: this.newMessage, status: 'sent'});
+        this.newMessage = ''
+      }
+    }
   },
 
   computed: {
