@@ -99,12 +99,9 @@
         <div class="center-right flex dir-column">
 
           <div
-            v-for="(contact, index) in contacts"            
-            class="received-message cloud  flex">
-            <div
-              v-for="(mess, msgIndex) in contacts.messages"
-              v-if="contact.messages.status === 'sent'"
-              class="text-message">
+            v-for="(mess, msgIndex) in contacts[0].messages"            
+            class="received-message cloud flex">
+            <div class="text-message">
               {{mess.message}}
             </div>
             <div class="details flex dir-column">

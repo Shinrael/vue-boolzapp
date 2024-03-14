@@ -199,6 +199,7 @@ body{
   height: 15%;
   border: 1px solid var(--light-grey);
   border-bottom: none;
+  cursor: pointer;
 }
 
 .column-left .bottom-left .card .card-l{
