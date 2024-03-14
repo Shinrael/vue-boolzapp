@@ -87,6 +87,10 @@ body{
   width: 80%;
 }
 
+.active-card{
+  border: 1px solid red !important;
+}
+
 /****************************** 
               CSS
  ******************************/
