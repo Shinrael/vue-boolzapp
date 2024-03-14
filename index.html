@@ -59,7 +59,7 @@
         <div class="bottom-left">
           <div
             v-for="(contact, index) in contacts"
-            @click="contactActive = index"
+            @click="setActiveContact(index)"
             class="card flex align-center">
             <div class="card-l">
               <div class="circle">
@@ -80,7 +80,7 @@
 
         <div class="top-right flex align-center">
           <div
-            v-for="(contact, ctcIndex) in contacts[contactActive]"
+            v-for="(contact, ctcIndex) in activeContact"
             class="active-profile flex align-center">
             <div class="circle">
               <img :src="`${contact.avatar}`" alt="">
@@ -100,9 +100,9 @@
         <div class="center-right flex dir-column">
 
           <div
-            v-for="(mess, msgIndex) in contacts[contactActive].messages"
-            v-show="mess.status === 'sent'"            
-            class="received-message cloud flex">
+            v-for="(mess, msgIndex) in sortedMessages"
+            :class="{ 'received-message': mess.status === 'received', 'sent-message': mess.status === 'sent' }"            
+            class="cloud flex">
             <div class="text-message">
               {{mess.message}}
             </div>
@@ -116,14 +116,14 @@
                 </i>                           
               </div>
               <div class="time-message flex">
-                <span class="time">16:13</span> 
+                <span class="time">{{ mess.date }}</span> 
               </div>
             </div>  
           </div>
-          <div
-            v-for="(mess, msgIndex) in contacts[contactActive].messages"
-            v-show="mess.status === 'received'"
-            class="sent-message cloud flex">
+          <!-- <div
+            v-for="(mess, msgIndex) in sortedMessages"
+            :class="{ 'received-message': mess.status === 'received', 'sent-message': mess.status === 'sent' }"
+            class="cloud flex">
             <div class="text-message">
               {{mess.message}}
             </div>
@@ -137,10 +137,10 @@
                 </i>                           
               </div>
               <div class="time-message flex">
-                <span class="time">16:15</span> 
+                <span class="time">{{ mess.date }}</span> 
               </div>
             </div>  
-          </div>          
+          </div>           -->
                   
         </div>
 

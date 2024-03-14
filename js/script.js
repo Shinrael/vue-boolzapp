@@ -173,7 +173,21 @@ createApp({
   },
 
   methods:{
+    setActiveContact(index) {
+      this.contactActive = index;
+    }
+  },
 
+  computed:{
+    sortedMessages() {
+      // Ordina i messaggi per data
+      return sortedMessages = this.contacts[this.contactActive].messages.slice().sort((a, b) => {
+        return new Date(a.date) - new Date(b.date);
+      });
+    },
+    activeContact() {
+      return this.contacts[this.contactActive];
+    }
   },
 
   mounted(){
