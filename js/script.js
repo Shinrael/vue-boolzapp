@@ -205,22 +205,26 @@ createApp({
     /*
  * Questo metodo calcola e restituisce i messaggi ordinati per data per il contatto attivo.
  */
-sortedMessages() {
-  // Ordina i messaggi per data
-  return this.contacts[this.contactActive].messages.slice().sort((a, b) => {
-    // Converte le date dei messaggi in oggetti Date e le confronta
-    // Restituisce un valore negativo se la data di 'a' è precedente a quella di 'b'
-    // Restituisce un valore positivo se la data di 'a' è successiva a quella di 'b'
-    // Restituisce 0 se le date sono uguali
-    return new Date(a.date) - new Date(b.date);
-  });
-},
+    sortedMessages() {
+    // Ordina i messaggi per data
+    return this.contacts[this.contactActive].messages.slice().sort((a, b) => {
+        // Converte le date dei messaggi in oggetti Date e le confronta
+        // Restituisce un valore negativo se la data di 'a' è precedente a quella di 'b'
+        // Restituisce un valore positivo se la data di 'a' è successiva a quella di 'b'
+        // Restituisce 0 se le date sono uguali
+        return new Date(a.date) - new Date(b.date);
+    });
+    },
 
     /*
      * Restituisce il contatto attivo corrente
      */
     activeContact() {
       return this.contacts[this.contactActive];
+    },
+
+    visibleContacts(){
+        return this.contacts.filter(contact => contact.visible)
     }
   },
 

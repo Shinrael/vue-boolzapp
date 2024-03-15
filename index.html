@@ -58,7 +58,7 @@
 
         <div class="bottom-left">
           <div
-            v-for="(contact, index) in contacts"
+            v-for="(contact, index) in visibleContacts"
             @click="setActiveContact(index)"
             :class="{'active-card' : index === contactActive}"
             class="card flex align-center">
