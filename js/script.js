@@ -169,6 +169,7 @@ createApp({
     ],
     contactActive: 0,
     newMessage: '',
+    contactToSearch: '',
     
     }
   },
@@ -178,55 +179,72 @@ createApp({
      * Imposta il contatto attivo in base all'indice fornito
      */
     setActiveContact(index) {
+      // Imposta l'indice del contatto attivo
       this.contactActive = index;
     },
+    // Ottiene l'ultimo messaggio per un dato contatto
     getLastMessage(contactIndex) {
+      // Ottiene il contatto corrispondente all'indice fornito
       const contact = this.contacts[contactIndex];
+      // Verifica se il contatto esiste e se ha dei messaggi
       if (contact && contact.messages.length > 0) {
+        // Restituisce l'ultimo messaggio del contatto
         return contact.messages[contact.messages.length - 1];
       }
+      // Restituisce null se non ci sono messaggi per il contatto
       return null; 
     },
+    // Aggiunge un nuovo messaggio
     addMessage(){
+      // Rimuove gli spazi bianchi dal messaggio
       const trimMessage = this.newMessage.trim();
+      // Verifica se il messaggio non è vuoto
       if (trimMessage !== ''){
+        // Ottiene il contatto attivo
         const activeContact = this.contacts[this.contactActive];
+        // Aggiunge il nuovo messaggio alla lista dei messaggi del contatto attivo
         activeContact.messages.push({date: '', message: this.newMessage, status: 'sent'});
+        // Cancella il campo del nuovo messaggio
         this.newMessage = ''
+        // Simula una risposta dopo un secondo
         setTimeout(() => {
+          // Aggiunge un messaggio di conferma al contatto attivo
           activeContact.messages.push({date: '', message: 'OK', status: 'received'});
         }, 1000);
-        
       }
     }
   },
 
   computed: {
     /*
- * Questo metodo calcola e restituisce i messaggi ordinati per data per il contatto attivo.
- */
+     * Questo metodo calcola e restituisce i messaggi ordinati per data per il contatto attivo.
+     */
     sortedMessages() {
-    // Ordina i messaggi per data
-    return this.contacts[this.contactActive].messages.slice().sort((a, b) => {
+      // Ottiene i messaggi del contatto attivo e li ordina per data
+      return this.contacts[this.contactActive].messages.slice().sort((a, b) => {
         // Converte le date dei messaggi in oggetti Date e le confronta
         // Restituisce un valore negativo se la data di 'a' è precedente a quella di 'b'
         // Restituisce un valore positivo se la data di 'a' è successiva a quella di 'b'
         // Restituisce 0 se le date sono uguali
         return new Date(a.date) - new Date(b.date);
-    });
+      });
     },
 
     /*
      * Restituisce il contatto attivo corrente
      */
     activeContact() {
+      // Restituisce il contatto attivo
       return this.contacts[this.contactActive];
     },
 
-    visibleContacts(){
-        return this.contacts.filter(contact => contact.visible)
+    // Filtra i contatti in base al testo inserito nella barra di ricerca
+    filteredContact(){
+      // Filtra i contatti il cui nome contiene il testo di ricerca (ignorando maiuscole/minuscole)
+      return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.contactToSearch.toLowerCase()))
     }
   },
+
 
   mounted(){
 
